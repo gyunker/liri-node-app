@@ -49,20 +49,21 @@ function spotifySong(){
         }; 
     spotify.search({type:'track', query:songTitle, limit:1},
 function (err,data){
+ 
+    if(err){
+        console.log("Oops.  Something unexpected happened" + err);
+        return false;
+    }
     console.log("\n====== Spotify: '" + songTitle + "' ==========");
     console.log("Artist(s): "+ data.tracks.items[0].album.artists[0].name);
     console.log("Song: "+data.tracks.items[0].name);
     console.log("Preview URL: "+data.tracks.items[0].preview_url);
     console.log("Album: "+data.tracks.items[0].album.name);
-    if(err){
-        console.log("Oops.  Something unexpected happened" + err);
-        return false;
-    }
     console.log("\n" );
     })
     }
 
-//============== OMDB Function ======================= 
+//============== OMDB Function ==================== 
 
 function movied() {
     var movieTitle =""; 
